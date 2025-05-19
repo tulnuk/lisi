@@ -1,0 +1,290 @@
+/* --- Basic Reset & Defaults --- (Keep as is) --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    /* --- Colors (Keep or Customize) --- */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --text-color: #495057;
+    --hero-text-color: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.6);
+    /* --- Fonts --- */
+    --body-font: 'Montserrat', sans-serif;
+    /* --- Transitions --- */
+    --transition-speed: 0.3s;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--body-font); line-height: 1.7; color: var(--text-color); background-color: #ffffff; padding-top: 60px; /* Add padding for fixed header */ }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.3; margin-bottom: 1rem; color: var(--dark-color); }
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; /* Center all section titles */ }
+h3 { font-size: 1.5rem; }
+p { margin-bottom: 1rem; }
+a { color: var(--primary-color); text-decoration: none; transition: color var(--transition-speed) ease; }
+a:hover { color: darken(var(--primary-color), 10%); }
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- Utility Classes --- (Keep container, content-section, alt-bg, section-intro) --- */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+.content-section { padding: 80px 0; }
+.alt-bg { background-color: var(--light-color); }
+.section-intro { max-width: 700px; margin: 0 auto 2.5rem auto; text-align: center; font-size: 1.1rem; color: var(--secondary-color); }
+
+/* --- Buttons --- (Keep as is) --- */
+.btn { display: inline-block; padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; text-align: center; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+.btn-primary { background-color: var(--primary-color); color: #fff; }
+.btn-primary:hover { background-color: darken(var(--primary-color), 10%); color: #fff; transform: translateY(-2px); }
+.btn-secondary { background-color: var(--secondary-color); color: #fff; }
+.btn-secondary:hover { background-color: darken(var(--secondary-color), 10%); color: #fff; transform: translateY(-2px); }
+
+/* --- Header & Language Switcher --- */
+.site-header {
+    position: fixed; /* Make header sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(33, 37, 41, 0.9); /* Semi-transparent dark */
+    padding: 10px 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-placeholder {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--light-color);
+}
+.language-switcher .lang-btn {
+    background: none;
+    border: 1px solid var(--secondary-color);
+    color: var(--light-color);
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+    font-size: 0.9rem;
+}
+.language-switcher .lang-btn:hover,
+.language-switcher .lang-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+
+/* --- Hero Section --- (Keep mostly as is, adjust height if needed due to fixed header) --- */
+#hero {
+    position: relative;
+    height: calc(100vh - 60px); /* Adjust height for fixed header */
+    /* margin-top: 60px; /* Push below fixed header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--hero-text-color);
+    overflow: hidden; /* Keep hidden overflow */
+    /* background-color: var(--dark-color); /* Removed fallback background */
+}
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;    /* RE-ADDED: Force element to be at least container width */
+    min-height: 100%;   /* RE-ADDED: Force element to be at least container height */
+    width: auto;        /* Let aspect ratio decide width */
+    height: auto;       /* Let aspect ratio decide height */
+    object-fit: cover; /* Changed from contain to cover */
+    z-index: -1;
+    /* max-width: 100%; REMOVED */
+    /* max-height: 100%; REMOVED */
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; }
+#hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--hero-text-color); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); }
+#hero .subtitle { font-size: 1.4rem; font-weight: 300; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); }
+.scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--hero-text-color); font-size: 1.5rem; z-index: 1; opacity: 0.8; animation: bounce 2s infinite; }
+.scroll-down:hover { opacity: 1; color: var(--hero-text-color); }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+
+
+/* --- About Section --- (Keep as is) --- */
+#about .about-details { max-width: 800px; margin: 1rem auto 0 auto; text-align: left; }
+
+/* --- REMOVE Old Gallery Styles --- */
+/* .gallery-grid { ... } */
+/* .gallery-item { ... } */
+/* .gallery-item img { ... } */
+/* .gallery-item:hover { ... } */
+/* .gallery-item:hover img { ... } */
+
+/* --- NEW Gallery Slider Styles --- */
+.gallery-slider-section {
+    padding: 60px 0; /* Slightly less padding than content sections */
+    width: 100%; /* Ensure full width */
+    overflow: hidden; /* Prevent horizontal scroll */
+}
+.gallery-slider-section h2 {
+    margin-bottom: 2rem; /* Space between title and slider */
+}
+.gallery-swiper {
+    width: 100%;
+    max-height: 80vh; /* Max height for the container */
+    /* background-color: #eee; */ /* Optional background for slider area */
+}
+.gallery-swiper .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure contained images don't cause overflow if needed */
+}
+/* Default (Wide Screens > 992px): Contain image within 80vh height */
+.gallery-swiper .swiper-slide img {
+    width: auto;        /* Let aspect ratio decide width */
+    max-width: 100%;    /* Prevent exceeding slide width */
+    height: auto;       /* Let aspect ratio decide height */
+    max-height: 80vh;   /* Limit height to container max-height */
+    object-fit: contain; /* Show entire image, fit within bounds */
+}
+/* Style Swiper Pagination */
+.gallery-swiper .swiper-pagination-bullet {
+    background-color: var(--primary-color);
+    opacity: 0.7;
+}
+.gallery-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* Style Swiper Navigation Buttons (arrows) */
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next {
+    color: #fff; /* Arrow color */
+    background-color: rgba(0, 0, 0, 0.5); /* Background for visibility */
+    padding: 15px; /* Padding around arrows */
+    border-radius: 50%; /* Round shape */
+    opacity: 0.8; /* Slightly transparent */
+    transition: opacity 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    width: 40px;
+    height: 40px;
+}
+.gallery-swiper .swiper-button-prev:hover,
+.gallery-swiper .swiper-button-next:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+}
+.gallery-swiper .swiper-button-prev::after,
+.gallery-swiper .swiper-button-next::after {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+
+/* --- Features Section --- */
+.features-grid {
+    display: flex; /* Use Flexbox */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center items horizontally */
+    gap: 2rem; /* Keep the gap */
+    margin-top: 3rem;
+    text-align: center;
+}
+.feature-item {
+    flex: 0 1 250px; /* Flex properties: grow 0, shrink 1, basis 250px */
+    /* Other styles remain */
+}
+.feature-item i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+.feature-item h3 { margin-bottom: 0.5rem; }
+
+/* --- Location Section --- (Keep as is) --- */
+.location-content { margin-top: 2rem; }
+.map-placeholder { margin-top: 2rem; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+.map-placeholder iframe { display: block; }
+
+/* --- CTA Section --- (Keep as is) --- */
+.cta-section { background-color: var(--primary-color); color: #fff; text-align: center; }
+.cta-section h2 { color: #fff; }
+.cta-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+.cta-section .btn-secondary { background-color: #fff; color: var(--primary-color); font-weight: 700; }
+.cta-section .btn-secondary:hover { background-color: var(--light-color); color: var(--primary-color); }
+
+/* --- Footer --- (Keep as is) --- */
+footer { background-color: var(--dark-color); color: var(--light-color); text-align: center; padding: 25px 0; font-size: 0.9rem; }
+footer p { margin-bottom: 0; opacity: 0.8; }
+
+/* --- REMOVE Lightbox Styles --- */
+/* .lightbox { ... } */
+/* .lightbox-content { ... } */
+/* @keyframes zoom { ... } */
+/* .lightbox-close { ... } */
+
+/* --- Responsive Design --- */
+
+/* Medium Screens (577px - 992px): Cover the 80vh area */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } #hero h1 { font-size: 3rem; } #hero .subtitle { font-size: 1.2rem; }
+    
+    /* Container max-height remains 80vh */
+    .gallery-swiper { max-height: 80vh; } 
+
+    /* Override image styles: Cover the 80vh area */
+    .gallery-swiper .swiper-slide img { 
+        width: 100%;    /* Fill slide width */
+        height: 80vh;   /* Fixed height */
+        object-fit: cover; /* Cover the area, cropping allowed */
+        max-height: none; /* Ensure fixed height isn't overridden */
+    }
+}
+
+@media (max-width: 768px) {
+    html { font-size: 15px; }
+    body { padding-top: 50px; /* Adjust for potentially smaller header */ }
+    .site-header { padding: 8px 0; }
+    .header-container { flex-direction: column; }
+    .logo-placeholder { margin-bottom: 8px; }
+    .language-switcher { margin-top: 5px; }
+    .content-section { padding: 60px 0; }
+    #hero { height: calc(100vh - 50px); margin-top: 50px; }
+    #hero h1 { font-size: 2.5rem; } #hero .subtitle { font-size: 1.1rem; }
+    /* .features-grid { grid-template-columns: 1fr 1fr; }  REMOVED - Flexbox handles wrapping */
+    
+    /* Gallery styles inherited from 992px breakpoint */
+}
+
+/* Small Screens (<= 576px): Contain image again */
+@media (max-width: 576px) {
+    html { font-size: 14px; }
+    #hero h1 { font-size: 2.2rem; } #hero .subtitle { font-size: 1rem; padding: 0 10px; }
+    .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+    /* .features-grid { grid-template-columns: 1fr; } REMOVED - Flexbox handles wrapping */
+    .language-switcher .lang-btn { font-size: 0.8rem; padding: 4px 8px; margin-left: 5px; }
+
+    /* Gallery container height still 80vh (inherited) */
+    /* .gallery-swiper { max-height: 80vh; } */
+
+    /* Override image styles AGAIN for smallest screens: Contain within 80vh */
+    .gallery-swiper .swiper-slide img {
+        width: auto;        /* Let aspect ratio decide width */
+        max-width: 100%;    /* Prevent exceeding slide width */
+        height: auto;       /* Let aspect ratio decide height */
+        max-height: 80vh;   /* Limit height */
+        object-fit: contain; /* Show entire image */
+    }
+}

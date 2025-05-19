@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- Set default language -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title will be set by JS -->
+    <title>Lisi Homes</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Optional: Add Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Optional: Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header (for language switcher) -->
+    <header class="site-header">
+        <div class="container header-container">
+             <!-- Placeholder for potential logo -->
+             <div class="logo-placeholder" data-lang-key="site_title_short">Lisi Homes</div>
+             <nav class="language-switcher">
+                 <button class="lang-btn" data-lang="en">English</button>
+                 <button class="lang-btn" data-lang="ka">ქართული</button> <!-- Georgian -->
+                 <button class="lang-btn" data-lang="ru">Русский</button> <!-- Russian -->
+             </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section id="hero">
+        <video autoplay muted loop playsinline poster="assets/images/hero-fallback.jpg" id="bg-video">
+            <source src="assets/video/background.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-lang-key="hero_title">Discover Lisi Homes</h1>
+            <p class="subtitle" data-lang-key="hero_subtitle">Experience unparalleled luxury and tranquility in our exclusive new development.</p>
+            <a href="assets/docs/brochure.pdf" download class="btn btn-primary" data-lang-key="hero_button">Download Brochure</a>
+        </div>
+        <a href="#about" class="scroll-down" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2 data-lang-key="about_title">Welcome Home</h2>
+            <p class="section-intro" data-lang-key="about_intro">Test Introduction</p>
+            <div class="about-details">
+                <p data-lang-key="about_detail_1">[More details paragraph 1 - EN]</p>
+                <p data-lang-key="about_detail_2">[More details paragraph 2 - EN]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW Gallery Sections -->
+    <section id="gallery-overview" class="gallery-slider-section">
+        <h2 data-lang-key="gallery_overview_title">House Overview</h2>
+        <div class="swiper gallery-swiper" id="swiper-overview">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="assets/images/overview/1.jpg" alt="House Overview 1"></div>
+                <div class="swiper-slide"><img src="assets/images/overview/2.jpg" alt="House Overview 2"></div>
+                <div class="swiper-slide"><img src="assets/images/overview/3.jpg" alt="House Overview 3"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Optional Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="gallery-parking" class="gallery-slider-section alt-bg">
+        <h2 data-lang-key="gallery_parking_title">Parking Area</h2>
+        <div class="swiper gallery-swiper" id="swiper-parking">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="assets/images/parking/1.jpg" alt="Parking Area 1"></div>
+                <div class="swiper-slide"><img src="assets/images/parking/2.jpg" alt="Parking Area 2"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="gallery-backyard" class="gallery-slider-section">
+        <h2 data-lang-key="gallery_backyard_title">Backyard & Amenities</h2>
+        <div class="swiper gallery-swiper" id="swiper-backyard">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="assets/images/backyard/1.jpg" alt="Backyard 1"></div>
+                <div class="swiper-slide"><img src="assets/images/backyard/2.jpg" alt="Backyard Amenities 1"></div>
+                <div class="swiper-slide"><img src="assets/images/backyard/3.jpg" alt="Backyard 2"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="gallery-interior" class="gallery-slider-section alt-bg">
+        <h2 data-lang-key="gallery_interior_title">Interior Design</h2>
+        <div class="swiper gallery-swiper" id="swiper-interior">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="assets/images/interior/1.jpg" alt="Interior 1"></div>
+                <div class="swiper-slide"><img src="assets/images/interior/2.jpg" alt="Interior 2"></div>
+                <div class="swiper-slide"><img src="assets/images/interior/3.jpg" alt="Interior 3"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="gallery-plans" class="gallery-slider-section">
+        <h2 data-lang-key="gallery_plans_title">Floor Plans</h2>
+        <div class="swiper gallery-swiper" id="swiper-plans">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="assets/images/plans/1.jpg" alt="Floor Plan 1"></div>
+                <div class="swiper-slide"><img src="assets/images/plans/2.jpg" alt="Floor Plan 2"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <!-- End NEW Gallery Sections -->
+
+
+     <!-- Features Section (Keep as is, just add data-lang-key) -->
+    <section id="features" class="content-section">
+        <div class="container">
+            <h2 data-lang-key="features_title">Key Features & Amenities</h2>
+            <p class="section-intro" data-lang-key="features_intro">Designed for comfort, convenience, and a touch of luxury.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-home"></i>
+                    <h3 data-lang-key="feature_1_title">[Feature 1 Title EN]</h3>
+                    <p data-lang-key="feature_1_desc">[Desc 1 EN]</p>
+                </div>
+                 <div class="feature-item">
+                    <i class="fas fa-tree"></i>
+                    <h3 data-lang-key="feature_2_title">[Feature 2 Title EN]</h3>
+                    <p data-lang-key="feature_2_desc">[Desc 2 EN]</p>
+                </div>
+                 <div class="feature-item">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3 data-lang-key="feature_3_title">[Feature 3 Title EN]</h3>
+                    <p data-lang-key="feature_3_desc">[Desc 3 EN]</p>
+                </div>
+                 <div class="feature-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-lang-key="feature_4_title">[Feature 4 Title EN]</h3>
+                    <p data-lang-key="feature_4_desc">[Desc 4 EN]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="content-section alt-bg">
+        <div class="container">
+            <h2 data-lang-key="location_title">Prime Location</h2>
+            <p class="section-intro" data-lang-key="location_intro">Perfectly situated for convenience and lifestyle.</p>
+            <div class="location-content">
+                <p data-lang-key="location_desc">[Location description EN]</p>
+                 <div class="map-placeholder">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2477.6963175676146!2d44.704210786889234!3d41.73585358932888!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2see!4v1746393404829!5m2!1sru!2see"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Location Map">
+                    </iframe>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="content-section cta-section">
+        <div class="container">
+            <h2 data-lang-key="cta_title">Ready to Learn More?</h2>
+            <p data-lang-key="cta_desc">Download our detailed brochure for floor plans, pricing insights, and complete project details.</p>
+            <a href="assets/docs/brochure.pdf" download class="btn btn-secondary" data-lang-key="cta_button">Download Brochure Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-lang-key="footer_text">© 2024 Lisi Homes. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- REMOVED Lightbox Structure -->
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Your Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
