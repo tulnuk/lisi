@@ -1,109 +1,184 @@
-/* --- Basic Reset & Defaults --- (Keep as is) --- */
+/* --- Basic Reset & Defaults --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-    /* --- Colors (Keep or Customize) --- */
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
+    /* --- Premium Color Palette --- */
+    --premium-bg: #1A1A1A;
+    --premium-surface: #2C2C2C;
+    --premium-text-primary: #F5F5F5;
+    --premium-text-secondary: #A0A0A0;
+    --premium-accent: #00A9FF; /* Vibrant Blue */
+    --premium-overlay: rgba(0, 0, 0, 0.7);
+
+    /* --- Original Colors (kept for reference or specific uses if needed) --- */
+    --primary-color: #007bff; /* Will be replaced by premium-accent in most cases */
+    --secondary-color: #6c757d; /* Will be replaced by premium-text-secondary */
     --light-color: #f8f9fa;
-    --dark-color: #212529;
-    --text-color: #495057;
-    --hero-text-color: #ffffff;
-    --overlay-color: rgba(0, 0, 0, 0.6);
+    --dark-color: #212529; /* Will be replaced by premium-surface or bg */
+    --text-color: #495057; /* Will be replaced by premium-text-primary/secondary */
+    --hero-text-color: #FFFFFF; /* Remains suitable */
+
     /* --- Fonts --- */
-    --body-font: 'Montserrat', sans-serif;
+    --body-font: 'Inter', sans-serif; /* Changed to Inter */
+    --heading-font: 'Manrope', sans-serif; /* Added Manrope for headings */
+
     /* --- Transitions --- */
     --transition-speed: 0.3s;
+    --animation-duration: 0.6s; /* For scroll animations */
 }
+
 html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--body-font); line-height: 1.7; color: var(--text-color); background-color: #ffffff; padding-top: 60px; /* Add padding for fixed header */ }
-h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.3; margin-bottom: 1rem; color: var(--dark-color); }
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; /* Center all section titles */ }
-h3 { font-size: 1.5rem; }
-p { margin-bottom: 1rem; }
-a { color: var(--primary-color); text-decoration: none; transition: color var(--transition-speed) ease; }
-a:hover { color: darken(var(--primary-color), 10%); }
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.7;
+    color: var(--premium-text-primary);
+    background-color: var(--premium-bg);
+    padding-top: 70px; /* Adjusted for a slightly taller header */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts */
+    overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700; /* Bold headings */
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+    color: var(--premium-text-primary);
+}
+
+h1 { font-size: 3rem; } /* Slightly larger base H1 */
+h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; } /* Larger H2, more margin */
+h3 { font-size: 1.75rem; } /* Larger H3 */
+
+p { margin-bottom: 1.2rem; color: var(--premium-text-secondary); } /* Default P color to secondary */
+a { color: var(--premium-accent); text-decoration: none; transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease; }
+a:hover { color: var(--premium-accent); opacity: 0.8; }
 img { max-width: 100%; height: auto; display: block; }
 
-/* --- Utility Classes --- (Keep container, content-section, alt-bg, section-intro) --- */
-.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
-.content-section { padding: 80px 0; }
-.alt-bg { background-color: var(--light-color); }
-.section-intro { max-width: 700px; margin: 0 auto 2.5rem auto; text-align: center; font-size: 1.1rem; color: var(--secondary-color); }
+/* --- Utility Classes --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; } /* Wider container, more padding */
+.content-section { padding: 100px 0; overflow: hidden; /* Prevent anim content from showing scrollbars before anim */}
+.alt-bg { background-color: var(--premium-surface); }
+.section-intro {
+    max-width: 750px;
+    margin: 0 auto 3rem auto; /* More bottom margin */
+    text-align: center;
+    font-size: 1.15rem; /* Slightly larger intro text */
+    color: var(--premium-text-secondary);
+    font-weight: 300;
+}
 
-/* --- Buttons --- (Keep as is) --- */
-.btn { display: inline-block; padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; text-align: center; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-.btn-primary { background-color: var(--primary-color); color: #fff; }
-.btn-primary:hover { background-color: darken(var(--primary-color), 10%); color: #fff; transform: translateY(-2px); }
-.btn-secondary { background-color: var(--secondary-color); color: #fff; }
-.btn-secondary:hover { background-color: darken(var(--secondary-color), 10%); color: #fff; transform: translateY(-2px); }
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem; /* Slightly larger padding */
+    font-family: var(--heading-font); /* Use heading font for buttons */
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase; /* Uppercase button text */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    text-decoration: none;
+    border: 1px solid transparent; /* Base border */
+    border-radius: 8px; /* More rounded buttons */
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+.btn-primary {
+    background-color: var(--premium-accent);
+    color: var(--premium-bg); /* Dark text on light accent button */
+    border-color: var(--premium-accent);
+}
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--premium-accent);
+    border-color: var(--premium-accent);
+    transform: translateY(-3px);
+}
+.btn-secondary {
+    background-color: var(--premium-text-secondary);
+    color: var(--premium-bg);
+    border-color: var(--premium-text-secondary);
+}
+.btn-secondary:hover {
+    background-color: transparent;
+    color: var(--premium-text-secondary);
+    border-color: var(--premium-text-secondary);
+    transform: translateY(-3px);
+}
 
 /* --- Header & Language Switcher --- */
 .site-header {
-    position: fixed; /* Make header sticky */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(33, 37, 41, 0.9); /* Semi-transparent dark */
-    padding: 10px 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: rgba(26, 26, 26, 0.85); /* Darker, slightly more transparent */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 0; /* Slightly more padding */
+    z-index: 1000; /* Higher z-index */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease, padding 0.3s ease;
 }
+
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .logo-placeholder {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--light-color);
+    font-size: 1.6rem; /* Larger logo text */
+    font-weight: 700; /* Bolder logo */
+    color: var(--premium-text-primary);
+    letter-spacing: 0.5px;
 }
 .language-switcher .lang-btn {
-    background: none;
-    border: 1px solid var(--secondary-color);
-    color: var(--light-color);
-    padding: 5px 10px;
-    margin-left: 10px;
+    background: transparent;
+    border: 1px solid var(--premium-text-secondary);
+    color: var(--premium-text-secondary);
+    padding: 6px 12px;
+    margin-left: 12px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+    border-radius: 6px;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), color var(--transition-speed);
     font-size: 0.9rem;
+    text-transform: uppercase;
 }
 .language-switcher .lang-btn:hover,
 .language-switcher .lang-btn.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--premium-accent);
+    border-color: var(--premium-accent);
+    color: var(--premium-bg); /* Dark text on active button */
 }
 
 
-/* --- Hero Section --- (Keep mostly as is, adjust height if needed due to fixed header) --- */
+/* --- Hero Section --- */
 #hero {
     position: relative;
-    height: calc(100vh - 60px); /* Adjust height for fixed header */
-    /* margin-top: 60px; /* Push below fixed header */
+    height: calc(100vh - 70px); /* Adjusted for new header height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--hero-text-color);
-    overflow: hidden; /* Keep hidden overflow */
-    /* background-color: var(--dark-color); /* Removed fallback background */
+    overflow: hidden;
 }
 #bg-video {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 100%;    /* RE-ADDED: Force element to be at least container width */
-    min-height: 100%;   /* RE-ADDED: Force element to be at least container height */
-    width: auto;        /* Let aspect ratio decide width */
-    height: auto;       /* Let aspect ratio decide height */
-    object-fit: cover; /* Changed from contain to cover */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
     z-index: -1;
-    /* max-width: 100%; REMOVED */
-    /* max-height: 100%; REMOVED */
+    filter: brightness(0.7); /* Slightly darken video for text contrast */
 }
 .hero-overlay {
     position: absolute;
@@ -111,180 +186,405 @@ img { max-width: 100%; height: auto; display: block; }
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--overlay-color);
+    background-color: var(--premium-overlay); /* Use new overlay color */
     z-index: 0;
 }
-.hero-content { position: relative; z-index: 1; }
-#hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--hero-text-color); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); }
-#hero .subtitle { font-size: 1.4rem; font-weight: 300; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); }
-.scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--hero-text-color); font-size: 1.5rem; z-index: 1; opacity: 0.8; animation: bounce 2s infinite; }
-.scroll-down:hover { opacity: 1; color: var(--hero-text-color); }
-@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px; /* Constrain content width */
+    padding: 0 1rem; /* Padding for smaller screens */
+}
+#hero h1 {
+    font-size: 4.5rem; /* More impactful H1 */
+    font-weight: 800; /* Even bolder */
+    margin-bottom: 1rem;
+    color: var(--hero-text-color);
+    text-shadow: 0 0 5px rgba(0,0,0,0.3), /* Softer base shadow */
+                 0 0 10px rgba(0,0,0,0.2),
+                 0 0 20px var(--premium-accent); /* Subtle accent glow */
+    animation: heroFadeInDown 1s ease-out; /* Renamed to avoid conflict */
+}
+#hero .subtitle {
+    font-size: 1.5rem; /* Larger subtitle */
+    font-weight: 300; /* Lighter weight for contrast */
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(245, 245, 245, 0.9); /* Slightly off-white for subtitle */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    animation: heroFadeInUp 1s ease-out 0.5s; /* Renamed to avoid conflict */
+    animation-fill-mode: backwards;
+}
+#hero .btn-primary { /* Specific style for hero button */
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    animation: heroFadeInUp 1s ease-out 1s; /* Renamed to avoid conflict */
+    animation-fill-mode: backwards;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 40px; /* Slightly higher */
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--hero-text-color);
+    font-size: 2rem; /* Larger icon */
+    z-index: 1;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    animation: bounce 2.5s infinite 2s; /* Slower, delayed bounce */
+}
+.scroll-down:hover {
+    opacity: 1;
+    color: var(--premium-accent); /* Accent color on hover */
+    transform: translateX(-50%) translateY(-5px); /* Slight lift on hover */
+}
+
+/* Keyframes for HERO animations */
+@keyframes heroFadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce { /* Updated bounce for more subtlety */
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-15px); }
+    60% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* --- Scroll Animation Base Styles --- */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity var(--animation-duration) ease-out, transform var(--animation-duration) ease-out;
+}
+
+.fade-in-up {
+    transform: translateY(40px);
+}
+
+.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.fade-in-right {
+    transform: translateX(40px);
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Staggered animation for children of a .animate-stagger container */
+.animate-stagger .animate-on-scroll {
+    transition-delay: calc(var(--stagger-order, 0) * 150ms); /* Default delay, can be overridden by --stagger-order style prop in JS */
+}
 
 
-/* --- About Section --- (Keep as is) --- */
-#about .about-details { max-width: 800px; margin: 1rem auto 0 auto; text-align: left; }
+/* --- About Section --- */
+#about .about-details {
+    max-width: 850px; /* Wider text block */
+    margin: 1.5rem auto 0 auto;
+    text-align: left; /* Keep left align, but it's within a centered .container */
+    column-count: 1; /* Simple one-column layout for desktop */
+    column-gap: 3rem;
+}
+#about .about-details p {
+    color: var(--premium-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    /* break-inside: avoid-column; /* Prevents paragraphs from breaking across columns too awkwardly */
+}
 
-/* --- REMOVE Old Gallery Styles --- */
-/* .gallery-grid { ... } */
-/* .gallery-item { ... } */
-/* .gallery-item img { ... } */
-/* .gallery-item:hover { ... } */
-/* .gallery-item:hover img { ... } */
-
-/* --- NEW Gallery Slider Styles --- */
+/* --- Gallery Slider Styles --- */
 .gallery-slider-section {
-    padding: 60px 0; /* Slightly less padding than content sections */
-    width: 100%; /* Ensure full width */
-    overflow: hidden; /* Prevent horizontal scroll */
+    padding: 80px 0;
+    width: 100%;
+    /* overflow: hidden; /* Moved to .content-section */
 }
 .gallery-slider-section h2 {
-    margin-bottom: 2rem; /* Space between title and slider */
+    color: var(--premium-text-primary);
+    margin-bottom: 3rem; /* More space */
 }
 .gallery-swiper {
     width: 100%;
-    max-height: 80vh; /* Max height for the container */
-    /* background-color: #eee; */ /* Optional background for slider area */
+    max-height: 75vh; /* Adjusted slightly */
+    overflow: hidden; /* Add this line to clip overflowing slides */
 }
 .gallery-swiper .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: var(--premium-surface); /* Match alt-bg if section has it */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ensure contained images don't cause overflow if needed */
+    overflow: hidden; /* This was already here, which is good */
+    border-radius: 10px; /* Rounded corners for slides */
 }
-/* Default (Wide Screens > 992px): Contain image within 80vh height */
 .gallery-swiper .swiper-slide img {
-    width: auto;        /* Let aspect ratio decide width */
-    max-width: 100%;    /* Prevent exceeding slide width */
-    height: auto;       /* Let aspect ratio decide height */
-    max-height: 80vh;   /* Limit height to container max-height */
-    object-fit: contain; /* Show entire image, fit within bounds */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 10px; /* Match slide border radius */
 }
-/* Style Swiper Pagination */
 .gallery-swiper .swiper-pagination-bullet {
-    background-color: var(--primary-color);
-    opacity: 0.7;
+    background-color: var(--premium-accent);
+    opacity: 0.6;
+    width: 10px; /* Larger bullets */
+    height: 10px;
+    margin: 0 5px !important; /* Ensure spacing */
 }
 .gallery-swiper .swiper-pagination-bullet-active {
     opacity: 1;
+    background-color: var(--premium-accent); /* Explicitly set active color */
 }
 
-/* Style Swiper Navigation Buttons (arrows) */
 .gallery-swiper .swiper-button-prev,
 .gallery-swiper .swiper-button-next {
-    color: #fff; /* Arrow color */
-    background-color: rgba(0, 0, 0, 0.5); /* Background for visibility */
-    padding: 15px; /* Padding around arrows */
-    border-radius: 50%; /* Round shape */
-    opacity: 0.8; /* Slightly transparent */
-    transition: opacity 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
-    width: 40px;
-    height: 40px;
+    color: var(--premium-text-primary);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px; /* Larger click area */
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    width: 50px; /* Larger buttons */
+    height: 50px;
+    transform: scale(0.9); /* Slightly smaller base size */
+}
+.gallery-swiper:hover .swiper-button-prev, /* Show on gallery hover */
+.gallery-swiper:hover .swiper-button-next {
+    opacity: 0.9;
+    transform: scale(1); /* Scale up on hover */
 }
 .gallery-swiper .swiper-button-prev:hover,
 .gallery-swiper .swiper-button-next:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--premium-accent); /* Accent color on hover */
 }
 .gallery-swiper .swiper-button-prev::after,
 .gallery-swiper .swiper-button-next::after {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Larger icons */
     font-weight: bold;
 }
 
 
-
 /* --- Features Section --- */
+#features {
+    position: relative; /* For parallax positioning context */
+    /* background-image will be set by JS for parallax */
+    /* Fallback if JS is disabled or for very basic effect if preferred over blank */
+    /* background-image: url('../assets/images/hero-fallback.jpg'); */ 
+    /* background-attachment: fixed; */ /* Avoid if using JS parallax for this element */
+    /* background-position: center; */ /* JS will control this */
+    /* background-size: cover; */ /* JS will control this */
+    background-repeat: no-repeat; /* Keep this */
+}
+
+.features-text-container { /* New class for the dark background */
+    background-color: rgba(44, 44, 44, 0.7); /* --premium-surface with alpha */
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem; /* Space below the container */
+    position: relative; /* Ensure it's above the parallax bg */
+    z-index: 2; /* Higher z-index than features-grid if needed, or just ensure it's above parallax */
+}
+
+.features-text-container h2,
+.features-text-container .section-intro {
+    color: var(--premium-text-primary); /* Ensure text is light */
+}
+/* Removed the specific color for .features-text-container .section-intro to inherit from .features-text-container */
+
+
 .features-grid {
-    display: flex; /* Use Flexbox */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center items horizontally */
-    gap: 2rem; /* Keep the gap */
-    margin-top: 3rem;
-    text-align: center;
+    display: grid; /* Changed to grid for more control */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for wider screens */
+    gap: 2.5rem; /* Slightly more gap */
+    /* margin-top: 3.5rem; Removed, as text-container provides top spacing */
+    text-align: left; /* Align text left within feature items */
+    position: relative; /* Ensure feature items are on top of the parallaxing background */
+    z-index: 1;
 }
 .feature-item {
-    flex: 0 1 250px; /* Flex properties: grow 0, shrink 1, basis 250px */
-    /* Other styles remain */
+    background-color: var(--premium-surface); /* Card background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keep this for hover */
+    /* Scroll animation is handled by .animate-on-scroll */
 }
-.feature-item i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
-.feature-item h3 { margin-bottom: 0.5rem; }
+.feature-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+.feature-item i {
+    font-size: 2.8rem; /* Larger icons */
+    color: var(--premium-accent);
+    margin-bottom: 1.5rem; /* More space below icon */
+    display: inline-block; /* Allows margin */
+}
+.feature-item h3 {
+    margin-bottom: 0.8rem;
+    color: var(--premium-text-primary);
+}
+.feature-item p {
+    color: var(--premium-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
-/* --- Location Section --- (Keep as is) --- */
-.location-content { margin-top: 2rem; }
-.map-placeholder { margin-top: 2rem; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
-.map-placeholder iframe { display: block; }
+/* --- Location Section --- */
+#location.content-section.alt-bg { /* Specificity for dark theme */
+    background-color: var(--premium-surface);
+}
+.location-content { margin-top: 2.5rem; }
+.map-placeholder {
+    margin-top: 2.5rem;
+    border-radius: 10px; /* Consistent border radius */
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.map-placeholder iframe { display: block; border: 0; } /* Remove iframe border */
 
-/* --- CTA Section --- (Keep as is) --- */
-.cta-section { background-color: var(--primary-color); color: #fff; text-align: center; }
-.cta-section h2 { color: #fff; }
-.cta-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
-.cta-section .btn-secondary { background-color: #fff; color: var(--primary-color); font-weight: 700; }
-.cta-section .btn-secondary:hover { background-color: var(--light-color); color: var(--primary-color); }
+/* --- CTA Section --- */
+.cta-section {
+    background-color: var(--premium-accent); /* Use accent as background */
+    color: var(--premium-bg); /* Dark text on accent background */
+    text-align: center;
+    padding: 80px 0; /* Keep padding or adjust */
+}
+.cta-section h2 {
+    color: var(--premium-bg); /* Dark text for heading */
+    font-size: 2.8rem;
+}
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    color: var(--premium-bg); /* Dark text for paragraph */
+    font-weight: 300;
+}
+.cta-section .btn-secondary { /* Style the button for this section */
+    background-color: var(--premium-text-primary); /* Light button */
+    color: var(--premium-accent); /* Accent text color */
+    border-color: var(--premium-text-primary);
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+.cta-section .btn-secondary:hover {
+    background-color: transparent;
+    color: var(--premium-text-primary); /* Light text on hover */
+    border-color: var(--premium-text-primary);
+}
 
-/* --- Footer --- (Keep as is) --- */
-footer { background-color: var(--dark-color); color: var(--light-color); text-align: center; padding: 25px 0; font-size: 0.9rem; }
-footer p { margin-bottom: 0; opacity: 0.8; }
-
-/* --- REMOVE Lightbox Styles --- */
-/* .lightbox { ... } */
-/* .lightbox-content { ... } */
-/* @keyframes zoom { ... } */
-/* .lightbox-close { ... } */
+/* --- Footer --- */
+footer {
+    background-color: var(--premium-bg); /* Match main background */
+    color: var(--premium-text-secondary);
+    text-align: center;
+    padding: 40px 0; /* More padding */
+    font-size: 0.95rem;
+    border-top: 1px solid var(--premium-surface); /* Subtle top border */
+}
+footer p { margin-bottom: 0; opacity: 0.7; }
 
 /* --- Responsive Design --- */
 
-/* Medium Screens (577px - 992px): Cover the 80vh area */
 @media (max-width: 992px) {
-    h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } #hero h1 { font-size: 3rem; } #hero .subtitle { font-size: 1.2rem; }
-    
-    /* Container max-height remains 80vh */
-    .gallery-swiper { max-height: 80vh; } 
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    #hero h1 { font-size: 3.5rem; } /* Adjusted hero H1 */
+    #hero .subtitle { font-size: 1.3rem; }
+    .content-section { padding: 80px 0; }
 
-    /* Override image styles: Cover the 80vh area */
-    .gallery-swiper .swiper-slide img { 
-        width: 100%;    /* Fill slide width */
-        height: 80vh;   /* Fixed height */
-        object-fit: cover; /* Cover the area, cropping allowed */
-        max-height: none; /* Ensure fixed height isn't overridden */
+    /* #about .about-details { column-count: 1; } /* Single column for about on medium screens */ /* This is now the default */
+
+    .gallery-swiper { max-height: 70vh; }
+    .gallery-swiper .swiper-slide img { max-height: 70vh; }
+    .gallery-swiper .swiper-button-prev,
+    .gallery-swiper .swiper-button-next {
+        width: 45px; height: 45px; padding: 15px;
     }
+    .gallery-swiper .swiper-button-prev::after,
+    .gallery-swiper .swiper-button-next::after {
+        font-size: 1.2rem;
+    }
+
+    .features-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } /* auto-fit for medium screens */
 }
 
 @media (max-width: 768px) {
     html { font-size: 15px; }
-    body { padding-top: 50px; /* Adjust for potentially smaller header */ }
-    .site-header { padding: 8px 0; }
+    body { padding-top: 60px; /* Adjust for potentially smaller header */ }
+    .site-header { padding: 12px 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     .header-container { flex-direction: column; }
-    .logo-placeholder { margin-bottom: 8px; }
-    .language-switcher { margin-top: 5px; }
+    .logo-placeholder { margin-bottom: 10px; font-size: 1.5rem; }
+    .language-switcher { margin-top: 8px; }
+    .language-switcher .lang-btn { margin-left: 8px; padding: 5px 10px; }
+
     .content-section { padding: 60px 0; }
-    #hero { height: calc(100vh - 50px); margin-top: 50px; }
-    #hero h1 { font-size: 2.5rem; } #hero .subtitle { font-size: 1.1rem; }
-    /* .features-grid { grid-template-columns: 1fr 1fr; }  REMOVED - Flexbox handles wrapping */
-    
-    /* Gallery styles inherited from 992px breakpoint */
+    #hero { height: calc(100vh - 60px); }
+    #hero h1 { font-size: 2.8rem; }
+    #hero .subtitle { font-size: 1.2rem; padding: 0 15px; }
+    #hero .btn-primary { padding: 0.9rem 2rem; font-size: 1rem; }
+    .scroll-down { font-size: 1.8rem; bottom: 30px; }
+
+    #about .about-details { column-count: 1; } /* Ensure single column on smaller screens too if it wasn't default */
+    .features-grid { grid-template-columns: 1fr; gap: 2rem;} /* Single column for features */
+    .feature-item { padding: 1.5rem; }
+    .features-text-container { padding: 1.5rem; margin-bottom: 2rem; }
+
+
+    .cta-section h2 { font-size: 2.3rem; }
+    .cta-section p { font-size: 1.1rem; }
+
+    .gallery-swiper { max-height: 60vh; }
+    .gallery-swiper .swiper-slide img { max-height: 60vh; }
 }
 
-/* Small Screens (<= 576px): Contain image again */
 @media (max-width: 576px) {
     html { font-size: 14px; }
-    #hero h1 { font-size: 2.2rem; } #hero .subtitle { font-size: 1rem; padding: 0 10px; }
-    .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
-    /* .features-grid { grid-template-columns: 1fr; } REMOVED - Flexbox handles wrapping */
-    .language-switcher .lang-btn { font-size: 0.8rem; padding: 4px 8px; margin-left: 5px; }
+    .container { padding: 0 1rem; } /* Less padding for very small screens */
+    #hero h1 { font-size: 2.4rem; }
+    #hero .subtitle { font-size: 1.1rem; padding: 0 10px; }
+    .btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
 
-    /* Gallery container height still 80vh (inherited) */
-    /* .gallery-swiper { max-height: 80vh; } */
+    .language-switcher .lang-btn { font-size: 0.8rem; padding: 4px 8px; margin-left: 6px; }
 
-    /* Override image styles AGAIN for smallest screens: Contain within 80vh */
-    .gallery-swiper .swiper-slide img {
-        width: auto;        /* Let aspect ratio decide width */
-        max-width: 100%;    /* Prevent exceeding slide width */
-        height: auto;       /* Let aspect ratio decide height */
-        max-height: 80vh;   /* Limit height */
-        object-fit: contain; /* Show entire image */
+    #about .about-details { margin-top: 1rem; }
+    #about .about-details p { font-size: 1rem; }
+    #about .about-details { column-count: 1; } /* Ensure single column for about details too */
+
+
+    .gallery-swiper { max-height: 55vh; }
+    .gallery-swiper .swiper-slide img { max-height: 55vh; }
+    .gallery-swiper .swiper-button-prev,
+    .gallery-swiper .swiper-button-next {
+        width: 40px; height: 40px; padding: 10px; display: none; /* Optionally hide on smallest screens */
+    }
+     .gallery-swiper .swiper-pagination-bullet {
+        width: 8px; height: 8px; margin: 0 4px !important;
     }
 }
+
+/* Ensure any sections with class alt-bg that are NOT gallery sections also get the dark surface color */
+.content-section.alt-bg:not(.gallery-slider-section) {
+    background-color: var(--premium-surface);
+}
+/* Ensure gallery sections that have alt-bg explicitly get the surface color */
+#gallery-parking.alt-bg, #gallery-interior.alt-bg {
+    background-color: var(--premium-surface) !important; /* Ensure it overrides if there are conflicts */
+}
+/* Ensure gallery sections WITHOUT alt-bg get the main premium background */
+#gallery-overview, #gallery-backyard, #gallery-plans {
+    background-color: var(--premium-bg);
+}
+

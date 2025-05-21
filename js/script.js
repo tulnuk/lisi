@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Language Switching Logic ---
-
     const translations = {
+        // ... (translations object remains the same)
         // --- English (en) ---
         en: {
             // Meta
@@ -132,148 +132,144 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footer_text: "© 2024 Lisi Homes. Все права защищены."
         }
-    };
+    }; // End of translations
 
     const languageButtons = document.querySelectorAll('.lang-btn');
     const translatableElements = document.querySelectorAll('[data-lang-key]');
-    const htmlElement = document.documentElement; // Target the <html> tag
+    const htmlElement = document.documentElement;
 
     function setLanguage(lang) {
         if (!translations[lang]) {
             console.error(`Language ${lang} not found in translations.`);
             return;
         }
-
-        // Update text content
         translatableElements.forEach(element => {
             const key = element.getAttribute('data-lang-key');
             if (translations[lang][key]) {
-                 // Use innerHTML for keys that might contain HTML like the footer
-                 if (key === 'footer_text') {
-                     element.innerHTML = translations[lang][key];
-                 } else {
-                     element.textContent = translations[lang][key];
-                 }
+                if (key === 'footer_text') element.innerHTML = translations[lang][key];
+                else element.textContent = translations[lang][key];
             } else {
-                console.warn(`Translation key "${key}" not found for language "${lang}".`);
+                console.warn(`Translation key "${key}" not found for lang "${lang}".`);
             }
         });
-
-         // Update page title
-        if (translations[lang]['page_title']) {
-            document.title = translations[lang]['page_title'];
-        }
-
-        // Update html lang attribute
+        if (translations[lang]['page_title']) document.title = translations[lang]['page_title'];
         htmlElement.setAttribute('lang', lang);
-
-        // Update active button state
         languageButtons.forEach(button => {
-            if (button.getAttribute('data-lang') === lang) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
+            button.classList.toggle('active', button.getAttribute('data-lang') === lang);
         });
-
-        // Store preference
         localStorage.setItem('preferredLanguage', lang);
     }
 
     languageButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const lang = button.getAttribute('data-lang');            
-            setLanguage(lang);
-        });
+        button.addEventListener('click', () => setLanguage(button.getAttribute('data-lang')));
     });
 
-    // Set initial language on load
     const savedLang = localStorage.getItem('preferredLanguage');
-    // Check browser language as a fallback, default to 'en'
     const browserLang = navigator.language.split('-')[0];
     const initialLang = savedLang || (translations[browserLang] ? browserLang : 'en');
     setLanguage(initialLang);
 
-
     // --- Swiper Slider Initialization ---
-
-    // Common options for all Swiper instances
     const commonSwiperOptions = {
-        loop: true, // Enable continuous loop mode
-        autoplay: {
-          delay: 4000, // Delay between transitions (in ms)
-          disableOnInteraction: false, // Autoplay will not be disabled after user interactions (swipes)
-          pauseOnMouseEnter: true, // Pause autoplay when mouse enters the slider
+        effect: 'creative',
+        creativeEffect: {
+            prev: {
+                translate: ['-75%', 0, -400],
+                scale: 0.8,
+                opacity: 0.7,
+                shadow: true,
+            },
+            next: {
+                translate: ['75%', 0, -400],
+                scale: 0.8,
+                opacity: 0.7,
+                shadow: true,
+            },
         },
-        pagination: {
-          el: '.swiper-pagination', // CSS selector for pagination container
-          clickable: true, // Allow clicking on pagination bullets to navigate
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }
-      };
-  
-      // Options specific to the overview Swiper
-      const swiperOverviewOptions = {
-        ...commonSwiperOptions
-      };
-      
-      // Options specific to the parking Swiper
-      const swiperParkingOptions = {
-        ...commonSwiperOptions
-      };
-      
-      // Options specific to the backyard Swiper
-      const swiperBackyardOptions = {
-        ...commonSwiperOptions
-      };
-      
-      // Options specific to the interior Swiper
-      const swiperInteriorOptions = {
-        ...commonSwiperOptions
-      };
-      
-      // Options specific to the plans Swiper
-      const swiperPlansOptions = {
-        ...commonSwiperOptions
-      };
-
-    // Initialize each Swiper instance
+        grabCursor: true,   
+        centeredSlides: true, 
+        slidesPerView: 'auto', 
+        loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+    };
     try {
-        const swiperOverview = new Swiper('#swiper-overview', swiperOverviewOptions);
-        const swiperParking = new Swiper('#swiper-parking', swiperParkingOptions);
-        const swiperBackyard = new Swiper('#swiper-backyard', swiperBackyardOptions);
-        const swiperInterior = new Swiper('#swiper-interior', swiperInteriorOptions);
-        const swiperPlans = new Swiper('#swiper-plans', swiperPlansOptions);
-    } catch (error) {
-        console.error("Swiper initialization failed: ", error);
-        // Display a message to the user?
-    }
+        new Swiper('#swiper-overview', { ...commonSwiperOptions });
+        new Swiper('#swiper-parking', { ...commonSwiperOptions, loop: false });
+        new Swiper('#swiper-backyard', { ...commonSwiperOptions });
+        new Swiper('#swiper-interior', { ...commonSwiperOptions });
+        new Swiper('#swiper-plans', { ...commonSwiperOptions, loop: false });
+    } catch (error) { console.error("Swiper initialization failed: ", error); }
 
-
-    // --- Smooth Scroll for anchor links (Keep as is) ---
+    // --- Smooth Scroll for anchor links ---
     const scrollLinks = document.querySelectorAll('a[href^="#"]');
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href.length > 1 && document.querySelector(href)) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                // Adjust for fixed header height
-                const headerOffset = 60; // Height of your fixed header
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            const targetId = href.substring(1); // Get ID without #
+            // Check if it's just "#" or an ID that doesn't exist
+            if (href === "#" || !document.getElementById(targetId)) {
+                // Potentially a link that shouldn't smooth scroll or target doesn't exist
+                // Allow default behavior or handle as an error if preferred
+                console.warn(`Smooth scroll target "${href}" not found or invalid.`);
+                return; 
             }
+            e.preventDefault();
+            const targetElement = document.getElementById(targetId);
+            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 70;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         });
     });
 
-    // --- REMOVED Lightbox Functionality ---
+    // --- Scroll Animation Logic ---
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observerOptions = {
+        root: null, // relative to document viewport 
+        rootMargin: '0px',
+        threshold: 0.2 // 20% of item has to be visible to trigger
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Animate only once
+            }
+        });
+    };
+
+    const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+    animatedElements.forEach(el => scrollObserver.observe(el));
+
+    // Staggered animations setup
+    const staggerContainers = document.querySelectorAll('.animate-stagger');
+    staggerContainers.forEach(container => {
+        const childrenToAnimate = container.querySelectorAll('.animate-on-scroll');
+        childrenToAnimate.forEach((child, index) => {
+            child.style.setProperty('--stagger-order', index);
+        });
+    });
+
+    // --- Parallax for Features Section ---
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) { 
+        featuresSection.style.backgroundImage = "url('assets/images/hero-fallback.jpg')"; 
+        featuresSection.style.backgroundRepeat = 'no-repeat';
+        featuresSection.style.backgroundSize = 'cover';
+        featuresSection.style.backgroundPosition = 'center center';
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            const sectionOffsetTop = featuresSection.offsetTop;
+            const relativeScrollY = scrollY - sectionOffsetTop;
+            
+            if (scrollY + window.innerHeight > sectionOffsetTop && scrollY < sectionOffsetTop + featuresSection.offsetHeight) {
+                featuresSection.style.backgroundPositionY = relativeScrollY * 0.3 + 'px';
+            }
+        });
+    }
 
 });
