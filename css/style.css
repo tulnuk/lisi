@@ -65,7 +65,7 @@ img { max-width: 100%; height: auto; display: block; }
     max-width: 750px;
     margin: 0 auto 3rem auto; /* More bottom margin */
     text-align: center;
-    font-size: 1.15rem; /* Slightly larger intro text */
+    font-size: 1.3rem; /* INCREASED from 1.15rem */
     color: var(--premium-text-secondary);
     font-weight: 300;
 }
@@ -296,7 +296,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 #about .about-details p {
     color: var(--premium-text-secondary);
-    font-size: 1.05rem;
+    font-size: 1.2rem; /* INCREASED from 1.05rem */
     line-height: 1.8;
     /* break-inside: avoid-column; /* Prevents paragraphs from breaking across columns too awkwardly */
 }
@@ -436,7 +436,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .feature-item p {
     color: var(--premium-text-secondary);
-    font-size: 0.95rem;
+    font-size: 1.1rem; /* INCREASED from 0.95rem */
     line-height: 1.6;
 }
 
@@ -560,7 +560,7 @@ footer p { margin-bottom: 0; opacity: 0.7; }
     .language-switcher .lang-btn { font-size: 0.8rem; padding: 4px 8px; margin-left: 6px; }
 
     #about .about-details { margin-top: 1rem; }
-    #about .about-details p { font-size: 1rem; }
+    #about .about-details p { font-size: 1.1rem; } /* INCREASED from 1rem */
     #about .about-details { column-count: 1; } /* Ensure single column for about details too */
 
 
