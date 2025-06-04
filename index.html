@@ -31,6 +31,10 @@
                  <button class="lang-btn" data-lang="ka">ქართული</button> <!-- Georgian -->
                  <button class="lang-btn" data-lang="ru">Русский</button> <!-- Russian -->
              </nav>
+             <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-sun"></i> <!-- Sun icon for light mode -->
+                <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+            </button>
         </div>
     </header>
 
@@ -68,9 +72,9 @@
         <h2 data-lang-key="gallery_overview_title">House Overview</h2>
         <div class="swiper gallery-swiper" id="swiper-overview">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/overview/overview_1.jpg" alt="House Overview 1"></div>
-                <div class="swiper-slide"><img src="assets/images/overview/overview_2.jpg" alt="House Overview 2"></div>
-                <div class="swiper-slide"><img src="assets/images/overview/overview_3.jpg" alt="House Overview 3"></div>
+                <div class="swiper-slide"><img src="assets/images/overview/1.jpg" alt="House Overview 1"></div>
+                <div class="swiper-slide"><img src="assets/images/overview/2.jpg" alt="House Overview 2"></div>
+                <div class="swiper-slide"><img src="assets/images/overview/3.jpg" alt="House Overview 3"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -83,8 +87,8 @@
         <h2 data-lang-key="gallery_parking_title">Parking Area</h2>
         <div class="swiper gallery-swiper" id="swiper-parking">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/parking/parking_1.jpg" alt="Parking Area 1"></div>
-                <div class="swiper-slide"><img src="assets/images/parking/parking_2.jpg" alt="Parking Area 2"></div>
+                <div class="swiper-slide"><img src="assets/images/parking/1.jpg" alt="Parking Area 1"></div>
+                <div class="swiper-slide"><img src="assets/images/parking/2.jpg" alt="Parking Area 2"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -96,9 +100,9 @@
         <h2 data-lang-key="gallery_backyard_title">Backyard & Amenities</h2>
         <div class="swiper gallery-swiper" id="swiper-backyard">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/backyard/backyard_1.jpg" alt="Backyard 1"></div>
-                <div class="swiper-slide"><img src="assets/images/backyard/backyard_2.jpg" alt="Backyard 2"></div>
-                <div class="swiper-slide"><img src="assets/images/backyard/backyard_3.jpg" alt="Backyard 3"></div>
+                <div class="swiper-slide"><img src="assets/images/backyard/1.jpg" alt="Backyard 1"></div>
+                <div class="swiper-slide"><img src="assets/images/backyard/2.jpg" alt="Backyard Amenities 1"></div>
+                <div class="swiper-slide"><img src="assets/images/backyard/3.jpg" alt="Backyard 2"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -110,14 +114,9 @@
         <h2 data-lang-key="gallery_interior_title">Interior Design</h2>
         <div class="swiper gallery-swiper" id="swiper-interior">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/interior/INT_LR1.jpeg" alt="Living Room 1"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_LR2.jpeg" alt="Living Room 2"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_MB1.jpeg" alt="Master Bedroom 1"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_MB4.jpeg" alt="Master Bedroom 2"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_MBt1.jpeg" alt="Master Bathroom 1"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_MBt2.jpeg" alt="Master Bathroom 2"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_ST1.jpeg" alt="Staircase 1"></div>
-                <div class="swiper-slide"><img src="assets/images/interior/INT_ST2.jpeg" alt="Staircase 2"></div>
+                <div class="swiper-slide"><img src="assets/images/interior/1.jpg" alt="Interior 1"></div>
+                <div class="swiper-slide"><img src="assets/images/interior/2.jpg" alt="Interior 2"></div>
+                <div class="swiper-slide"><img src="assets/images/interior/3.jpg" alt="Interior 3"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -129,8 +128,8 @@
         <h2 data-lang-key="gallery_plans_title">Floor Plans</h2>
         <div class="swiper gallery-swiper" id="swiper-plans">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/plans/plan_1.jpg" alt="Floor Plan 1"></div>
-                <div class="swiper-slide"><img src="assets/images/plans/plan_2.jpg" alt="Floor Plan 2"></div>
+                <div class="swiper-slide"><img src="assets/images/plans/1.jpg" alt="Floor Plan 1"></div>
+                <div class="swiper-slide"><img src="assets/images/plans/2.jpg" alt="Floor Plan 2"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -191,6 +190,22 @@
                         title="Location Map">
                     </iframe>
                  </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="content-section">
+        <div class="container">
+            <h2 data-lang-key="contacts_title">Contact Us</h2>
+            <p class="section-intro" data-lang-key="contacts_intro">Get in touch with us for more information.</p>
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt"></i> <strong data-lang-key="contact_address">Address: </strong>Sample Street 123, Tbilisi, Georgia</p>
+                <p><i class="fas fa-phone"></i> <strong data-lang-key="contact_phone">Phone: </strong> <a href="tel:+995555123456">+995 555 123 456</a></p>
+                <p><i class="fas fa-envelope"></i> <strong data-lang-key="contact_email">Email: </strong> <a href="mailto:info@lisi.homes">info@lisi.homes</a></p>
+                <p><i class="fab fa-whatsapp"></i> <strong data-lang-key="contact_whatsapp">WhatsApp: </strong> <a href="https://wa.me/995555123456" target="_blank">+995 555 123 456</a></p>
+                <p><i class="fab fa-telegram-plane"></i> <strong data-lang-key="contact_telegram">Telegram: </strong> <a href="https://t.me/lisihomes" target="_blank">@lisihomes</a></p>
+                <p><i class="fab fa-facebook"></i> <strong data-lang-key="contact_facebook">Facebook: </strong> <a href="https://facebook.com/lisihomes" target="_blank">Lisi Homes</a></p>
             </div>
         </div>
     </section>

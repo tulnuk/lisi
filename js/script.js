@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // About
             about_title: "Welcome Home",
             about_intro: "A Home That Doesn't Try to Impress (But Effortlessly Does)",
-            about_detail_1: "This home doesn't need to shout about its status—its perfection lies in the details. Clean lines, natural materials, and expansive windows create a space where every moment is meant to be savored. The architecture isn't here to persuade; it simply performs its function beautifully: ushering in light, framing the views, and cultivating a sense of open space.",
+            about_detail_1: "This home doesn't need to shout about its status — its perfection lies in the details. Clean lines, natural materials, and expansive windows create a space where every moment is meant to be savored. The architecture isn't here to persuade; it simply performs its function beautifully: ushering in light, framing the views, and cultivating a sense of open space.",
             about_detail_2: "This is a choice for those who value substance over show, who recognize the true worth of meticulous detail. A home like this speaks for itself. All it needs is you.",
             // Gallery Titles
             gallery_overview_title: "Home Overview",
@@ -39,6 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
             location_title: "Premium Location",
             location_intro: "Ideally positioned for every lifestyle.",
             location_desc: "A mere 10–15 minute drive brings you to the mall or the beach. And in just 30 minutes, you can be in the vibrant heart of the city – Freedom Square!",
+            // Contacts
+            contacts_title: "Contact Us",
+            contacts_intro: "Get in touch with us for more information.",
+            contact_address: "Address: ",
+            contact_phone: "Phone: ",
+            contact_email: "Email: ",
+            contact_whatsapp: "WhatsApp: ",
+            contact_telegram: "Telegram: ",
+            contact_facebook: "Facebook: ",
             // CTA
             cta_title: "Ready to Discover More?",
             cta_desc: "Download our comprehensive brochure to delve into floor plans, pricing, and all the details of this exceptional project.",
@@ -82,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
             location_title: "პრემიუმ კლასის მდებარეობა",
             location_intro: "იდეალურად განლაგებული ნებისმიერი ცხოვრების წესისთვის.",
             location_desc: "მანქანით სულ რაღაც 10-15 წუთი — და თქვენ უკვე სავაჭრო ცენტრში ან პლაჟზე ხართ. ხოლო 30 წუთში ქალაქის გულში — თავისუფლების მოედანზე აღმოჩნდებით!",
+            // Contacts
+            contacts_title: "დაგვიკავშირდით",
+            contacts_intro: "დამატებითი ინფორმაციისთვის დაგვიკავშირდით.",
+            contact_address: "მისამართი: ",
+            contact_phone: "ტელეფონი: ",
+            contact_email: "ელ.ფოსტა: ",
+            contact_whatsapp: "WhatsApp: ",
+            contact_telegram: "Telegram: ",
+            contact_facebook: "Facebook: ",
             // CTA
             cta_title: "მზად ხართ მეტი გაიგოთ?",
             cta_desc: "ჩამოტვირთეთ ჩვენი დეტალური ბროშურა, რათა გაეცნოთ სართულების გეგმებს, ფასებს და პროექტის სრულ ინფორმაციას.",
@@ -125,6 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
             location_title: "Премиальное расположение",
             location_intro: "Идеально расположен для любого образа жизни.",
             location_desc: "Всего 10–15 минут на машине — и вы уже в торговом центре или на пляже. А через 30 минут вы в самом сердце города — на площади Свободы!",
+            // Contacts
+            contacts_title: "Свяжитесь с нами",
+            contacts_intro: "Свяжитесь с нами для получения дополнительной информации.",
+            contact_address: "Адрес: ",
+            contact_phone: "Телефон: ",
+            contact_email: "Эл. почта: ",
+            contact_whatsapp: "WhatsApp: ",
+            contact_telegram: "Telegram: ",
+            contact_facebook: "Facebook: ",
             // CTA
             cta_title: "Готовы узнать больше?",
             cta_desc: "Загрузите нашу подробную брошюру, чтобы ознакомиться с планами этажей, ценами и полной информацией о проекте.",
@@ -168,6 +195,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const browserLang = navigator.language.split('-')[0];
     const initialLang = savedLang || (translations[browserLang] ? browserLang : 'en');
     setLanguage(initialLang);
+
+    // --- Theme Switching Logic ---
+    const themeToggleButton = document.getElementById('theme-toggle');
+
+    function setTheme(theme) {
+        document.body.classList.toggle('light-theme', theme === 'light');
+        localStorage.setItem('preferredTheme', theme);
+    }
+
+    themeToggleButton.addEventListener('click', () => {
+        const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('preferredTheme');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDarkScheme ? 'dark' : 'light'); 
+    setTheme(initialTheme);
 
     // --- Swiper Slider Initialization ---
     const commonSwiperOptions = {
