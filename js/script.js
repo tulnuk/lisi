@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about_detail_1: "This home doesn't need to shout about its status — its perfection lies in the details. Clean lines, natural materials, and expansive windows create a space where every moment is meant to be savored. The architecture isn't here to persuade; it simply performs its function beautifully: ushering in light, framing the views, and cultivating a sense of open space.",
             about_detail_2: "This is a choice for those who value substance over show, who recognize the true worth of meticulous detail. A home like this speaks for itself. All it needs is you.",
             // Gallery Titles
-            gallery_overview_title: "Home Overview",
+            gallery_overview_title: "Home Overview - 265 sqm",
             gallery_parking_title: "Parking Area",
             gallery_backyard_title: "Courtyard",
             gallery_interior_title: "Interior Design",
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about_detail_1: "სახლი არ ყვირის თავის სტატუსზე — ის უბრალოდ იდეალურია დეტალებში. ლაკონიური ხაზები, ბუნებრივი მასალები და დიდი ფანჯრები ქმნიან სივრცეს, სადაც მომენტით ტკბობა გინდება. აქ არქიტექტურა არ ცდილობს თქვენს დარწმუნებას, ის უბრალოდ თავის საქმეს აკეთებს: უშვებს სინათლეს, ხსნის ხედს და გაძლევთ სივრცის შეგრძნებას.",
             about_detail_2: "ეს არის არჩევანი მათთვის, ვინც აფასებს არსს და იცის დეტალების ფასი. ასეთი სახლი სიტყვებს არ საჭიროებს. მხოლოდ თქვენს მობრძანებას.",
              // Gallery Titles
-            gallery_overview_title: "სახლის მიმოხილვა",
+            gallery_overview_title: "სახლის მიმოხილვა - 265 m2",
             gallery_parking_title: "საპარკინგე ზონა",
             gallery_backyard_title: "შიდა ეზო",
             gallery_interior_title: "ინტერიერის დიზაინი",
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about_detail_1: "Дом не кричит о своём статусе — он просто идеален в мелочах. Лаконичные линии, натуральные материалы и большие окна создают пространство, где хочется наслаждаться моментом. Архитектура здесь не пытается вас убедить, она просто делает свою работу: впускает свет, открывает вид и даёт ощущение простора.",
             about_detail_2: "Это выбор тех, кто ценит суть и знает цену деталям. Такой дом не требует слов. Только вашего присутствия.",
              // Gallery Titles
-            gallery_overview_title: "Обзор дома",
+            gallery_overview_title: "Обзор дома - 265 м2",
             gallery_parking_title: "Парковочная зона",
             gallery_backyard_title: "Внутренний дворик",
             gallery_interior_title: "Дизайн интерьера",
