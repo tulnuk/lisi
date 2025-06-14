@@ -48,8 +48,8 @@ body.light-theme {
     --premium-text-primary: #333333;
     --premium-text-secondary: #555555;
     --premium-accent: #007BFF;
-    --premium-overlay: rgba(255, 255, 255, 0.7);
-    --hero-text-color: #333333;
+    --premium-overlay: rgba(0, 0, 0, 0.4);
+    --hero-text-color: #FFFFFF;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -246,9 +246,12 @@ body.light-theme #bg-video {
     font-weight: 800; 
     margin-bottom: 1rem;
     color: var(--hero-text-color);
-    text-shadow: 0 0 5px rgba(0,0,0,0.3), 
-                 0 0 10px rgba(0,0,0,0.2),
-                 0 0 20px var(--premium-accent); 
+    text-shadow: 
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        2px 2px 5px rgba(0,0,0,0.3);
     animation: heroFadeInDown 1s ease-out; 
 }
 #hero .subtitle {
@@ -258,7 +261,7 @@ body.light-theme #bg-video {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--hero-text-color); /* Use hero-text-color which changes with theme */
+    color: var(--hero-text-color);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     animation: heroFadeInUp 1s ease-out 0.5s; 
     animation-fill-mode: backwards;
